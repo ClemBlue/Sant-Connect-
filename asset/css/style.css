@@ -67,3 +67,27 @@ table {
 .clear {
 	*zoom:1;
 }
+/* CSS du site */
+
+#footer {
+	display: flex;
+	align-items: center;
+	background-color: #76D9F7;
+	width: 1519.2px; 
+	height: 130.2px;
+}
+
+#footer .copyright {
+	margin-left: 550px;
+	font-weight: bolder;
+}
+
+#footer a{
+	color: white;
+	text-decoration: none;
+}
+
+#footer a:hover{
+	text-decoration: underline;
+	font-weight: bolder;
+}
