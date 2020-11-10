@@ -67,3 +67,23 @@ table {
 .clear {
 	*zoom:1;
 }
+/* HEADER */
+
+.headernav  {
+	background-color: #BCEFFF;
+	display: flex;
+	justify-content: space-between;
+	height: 83px
+
+}
+.headernav ul  {
+	display: flex;
+}
+
+.headernav nav ul li a {
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 8px 20px ;
+
+
+}
