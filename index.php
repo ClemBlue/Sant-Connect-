@@ -171,12 +171,7 @@ require('inc/header-front.php');
     </div>
   </form>
 </div>
-      <input type="password" name="password1"  class="form-control" value="" />
-    <!-- PASSWORD2 -->
-      <label for="password2">Confirmation mot de passe*</label>
-      <input type="password" name="password2"  class="form-control" value="" />
-
-    <input type="submit" name="submitinscription" value="Je m'inscris" />
+    
 </form>
 <?php if ($success == true): ?>
   <p>Inscription réussie, veuillez vous connecter</p>

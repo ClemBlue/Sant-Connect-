@@ -75,12 +75,13 @@ table {
 	display: flex;
 	align-items: center;
 	background-color: #76D9F7;
-	width: 1519.2px;
+	width: 100%;
+	justify-content: center;
 	height: 130.2px;
 }
 
 #footer .copyright {
-	margin-left: 550px;
+
 	font-weight: bolder;
 }
 
@@ -98,7 +99,7 @@ table {
 /* image de fond de l'accueil */
 .home-bg {
 	display: flex;
-	max-width: 1519px;
+	max-width: 100%;
 	position: relative;
 	z-index: -1;
 }
