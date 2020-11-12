@@ -152,5 +152,4 @@ require('inc/header-front.php');
 
 
 
-<?php
 require('inc/footer-front.php');

@@ -73,7 +73,7 @@ table {
 	display: flex;
 	align-items: center;
 	background-color: #76D9F7;
-	width: 1519.2px; 
+	width: 1519.2px;
 	height: 130.2px;
 }
 
@@ -94,20 +94,33 @@ table {
 /* HEADER */
 
 .headernav  {
-	background-color: #BCEFFF;
+	background-color: #EFFBFF;
+
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	height: 83px
 
 }
 .headernav ul  {
 	display: flex;
+	justify-content: flex-end;
+
+}
+.logo p {
+	display: flex;
 }
 
 .headernav nav ul li a {
+	background-color: #EFFBFF;
+	color: #333;
 	text-transform: uppercase;
 	text-decoration: none;
-	padding: 8px 20px ;
+	padding: 12px 60px;
+	border-radius: 10px;
 
 
+}
+.menunav  nav ul li a:hover, #header nav ul li a.active {
+  background-color: #BFFBFF;
 }

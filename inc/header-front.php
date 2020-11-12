@@ -15,10 +15,11 @@
         <div class="menunav">
            <nav>
              <ul>
-               <li><a class="active" href="#">Accueil</a></li>
-               <li><a href="#">Contact</a></li>
-               <li><a href="#">gggggg</a></li>
                <li><a href="admin/index.php">back</a></li>
+               <li><a href="#">Accueil</a></li>
+               <li><a href="#">Contact</a></li>
+              
+
              </ul>
            </nav>
          </div>
