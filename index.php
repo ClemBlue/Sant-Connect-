@@ -4,6 +4,7 @@ session_start();
 require('inc/pdo.php');
 require('inc/function.php');
 
+$success = false;
 // Inscription //
 $errorsIns = array();
 if(!empty($_POST['submitinscription'])) {
@@ -62,6 +63,7 @@ if(!empty($_POST['submitinscription'])) {
       $query->bindValue(':password',$hashPassword,PDO::PARAM_STR);
       $query->bindValue(':token',$token,PDO::PARAM_STR);
       $query->execute();
+      $success = true;
   }
 }
 
@@ -90,6 +92,8 @@ if(!empty($_POST['submitconnexion'])) {
           'role' => $user['role'],
           'ip' => $_SERVER['REMOTE_ADDR']
         );
+        header('Location: profil.php');
+        exit();
 
       } else {
         $errors['email'] = 'Error credential';
@@ -114,7 +118,8 @@ require('inc/header-front.php');
         <div class="logintitle">
           <h2>Se connecter</h2>
         </div>
-  <!-- LOGIN -->
+<form action="" method="post">
+<!-- LOGIN -->
   <div class="loginputs">
     <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
     <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="E-mail">
@@ -135,7 +140,9 @@ require('inc/header-front.php');
   <div class="signuptitle">
     <h2>S'inscrire</h2>
   </div>
-    <!-- SURNAME -->
+<form method="post" action=""  >
+
+<!-- SURNAME -->
     <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['surname'])) { echo $errorsIns['surname']; } ?></span>
       <input type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" placeholder="Prénom" />
@@ -164,6 +171,17 @@ require('inc/header-front.php');
     </div>
   </form>
 </div>
+      <input type="password" name="password1"  class="form-control" value="" />
+    <!-- PASSWORD2 -->
+      <label for="password2">Confirmation mot de passe*</label>
+      <input type="password" name="password2"  class="form-control" value="" />
+
+    <input type="submit" name="submitinscription" value="Je m'inscris" />
+</form>
+<?php if ($success == true): ?>
+  <p>Inscription réussie, veuillez vous connecter</p>
+<?php endif; ?>
+
 <img class="home-bg" src="asset/img/accueil-bg.png" alt="">
 
 <?php
