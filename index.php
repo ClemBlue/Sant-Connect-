@@ -109,7 +109,7 @@ require('inc/header-front.php');
 ?>
 
 <!-- Ajout Connexion (Clément Blin) -->
-<form action="" method="post">
+<form action="profil.php" method="post">
   <!-- LOGIN -->
   <label for="email">E-mail</label>
   <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
@@ -124,7 +124,7 @@ require('inc/header-front.php');
 
 <h1>Inscription </h1>
 <!-- Inscription par julien -->
-<form method="post" action=""  >
+<form method="post" action="profil.php"  >
 
     <!-- SURNAME -->
       <label for="surname">Prénom*</label>
@@ -148,8 +148,12 @@ require('inc/header-front.php');
 
     <input type="submit" name="submitinscription" value="Je m'inscris" />
 </form>
+
+<img class="home-bg" src="asset/img/accueil-bg.png" alt="">
+
+<<<<<<< HEAD
+=======
 <?php
 
-
-
+>>>>>>> 3c06956bfb8b4dec9d519f58be72f9d0037f4ee8
 require('inc/footer-front.php');

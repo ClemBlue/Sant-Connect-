@@ -95,7 +95,10 @@ table {
 
 .headernav  {
 	background-color: #EFFBFF;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3c06956bfb8b4dec9d519f58be72f9d0037f4ee8
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
