@@ -120,6 +120,7 @@ require('inc/header-front.php');
   <input type="password" name="password" id="password" class="form-control" value="">
 
   <input type="submit" name="submitconnexion" value="Connexion">
+  <a href="mot_de_passe_oublier.php">Mod de passe oublier</a>
 </form>
 
 <h1>Inscription </h1>
@@ -152,5 +153,5 @@ require('inc/header-front.php');
 
 
 
-<?php
+
 require('inc/footer-front.php');
