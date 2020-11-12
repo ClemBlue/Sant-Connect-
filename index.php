@@ -4,6 +4,7 @@ session_start();
 require('inc/pdo.php');
 require('inc/function.php');
 
+$success = false;
 // Inscription //
 $errorsIns = array();
 if(!empty($_POST['submitinscription'])) {
@@ -62,6 +63,7 @@ if(!empty($_POST['submitinscription'])) {
       $query->bindValue(':password',$hashPassword,PDO::PARAM_STR);
       $query->bindValue(':token',$token,PDO::PARAM_STR);
       $query->execute();
+      $success = true;
   }
 }
 
@@ -90,6 +92,8 @@ if(!empty($_POST['submitconnexion'])) {
           'role' => $user['role'],
           'ip' => $_SERVER['REMOTE_ADDR']
         );
+        header('Location: profil.php');
+        exit();
 
       } else {
         $errors['email'] = 'Error credential';
@@ -109,7 +113,7 @@ require('inc/header-front.php');
 ?>
 
 <!-- Ajout Connexion (Clément Blin) -->
-<form action="profil.php" method="post">
+<form action="" method="post">
   <!-- LOGIN -->
   <label for="email">E-mail</label>
   <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
@@ -124,7 +128,7 @@ require('inc/header-front.php');
 
 <h1>Inscription </h1>
 <!-- Inscription par julien -->
-<form method="post" action="profil.php"  >
+<form method="post" action=""  >
 
     <!-- SURNAME -->
       <label for="surname">Prénom*</label>
@@ -148,6 +152,9 @@ require('inc/header-front.php');
 
     <input type="submit" name="submitinscription" value="Je m'inscris" />
 </form>
+<?php if ($success == true): ?>
+  <p>Inscription réussis, veuillez vous connecter</p>
+<?php endif; ?>
 
 <img class="home-bg" src="asset/img/accueil-bg.png" alt="">
 
