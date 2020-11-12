@@ -150,7 +150,4 @@ require('inc/header-front.php');
 </form>
 <?php
 
-
-
-<?php
 require('inc/footer-front.php');
