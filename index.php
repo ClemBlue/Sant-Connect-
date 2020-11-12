@@ -7,7 +7,7 @@ require('inc/function.php');
 // Inscription //
 $errorsIns = array();
 if(!empty($_POST['submitinscription'])) {
-  // Faille xss
+  // Faille xss.
   $surname    = cleanXss($_POST['surname']);
   $name    = cleanXss($_POST['name']);
   $email1     = cleanXss($_POST['email1']);
