@@ -95,10 +95,6 @@ table {
 
 .headernav  {
 	background-color: #EFFBFF;
-<<<<<<< HEAD
-
-=======
->>>>>>> 3c06956bfb8b4dec9d519f58be72f9d0037f4ee8
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -126,4 +122,40 @@ table {
 }
 .menunav  nav ul li a:hover, #header nav ul li a.active {
   background-color: #BFFBFF;
+}
+/* CONTACT */
+.bodycontact {
+background-color: #F0F0F0;
+
+}
+.contact {
+	font-size: 3em;
+	display: flex;
+	justify-content: center;
+	padding-top: 10px;
+}
+.box1 img {
+width: 100%;
+padding-top: 30px;
+margin-bottom: 100px;
+}
+.box1 {
+	position: relative;
+	height: 700px;
+	width: 500px;
+	padding-left: 50px;
+	padding-bottom: 50px;
+}
+.box2 {
+	position: absolute;
+	right: -175px;
+	top: 38%;
+	background-color: #131313;
+	color: #FFF;
+	height: 250px;
+	width : 387px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2.5em;
 }
