@@ -148,6 +148,9 @@ require('inc/header-front.php');
 
     <input type="submit" name="submitinscription" value="Je m'inscris" />
 </form>
+
+<img class="home-bg" src="asset/img/accueil-bg.png" alt="">
+
 <?php
 
 require('inc/footer-front.php');
