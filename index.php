@@ -171,7 +171,7 @@ require('inc/header-front.php');
     </div>
   </form>
 </div>
-    
+
 </form>
 <?php if ($success == true): ?>
   <p>Inscription réussie, veuillez vous connecter</p>
@@ -179,8 +179,5 @@ require('inc/header-front.php');
 
 <img class="home-bg" src="asset/img/accueil-bg.png" alt="">
 
-
 <?php
-
-
 require('inc/footer-front.php');
