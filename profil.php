@@ -27,6 +27,7 @@ $vaccinsAll = $query->fetchAll();
 
 // Sélection des vaccins liés au user //
 $n = -1;
+$vaccinsOfUser = array();
 if (!empty($vaccinsUser)) {
   foreach ($vaccinsUser as $vaccinUser) {
     $n++;
@@ -40,15 +41,21 @@ if (!empty($vaccinsUser)) {
 }
 
 // Sélection des autres vaccins, non liés au user //
-$m = -1;
-foreach ($vaccinsUser as $vaccinUser) {
-  $m++;
-  $idVaccin = $vaccinUser['id_vaccin'];
-  $sql = "SELECT * FROM vaccins WHERE id != :id";
-  $query = $pdo->prepare($sql);
-  $query->bindValue(':id',$idVaccin,PDO::PARAM_INT);
-  $query->execute();
-  $notChooseVaccins[$m] = $query->fetch();
+if (!empty($vaccinsOfUser)) {
+  $maxVaccins = count($vaccinsAll);
+  $maxUserVaccins = count($vaccinsOfUser);
+  $notChooseVaccins = array();
+  for ($i=0; $i < $maxVaccins; $i++) {
+    for ($j=0; $j < $maxUserVaccins; $j++) {
+      $notChooseVaccins[$i] = array_diff($vaccinsAll[$i],$vaccinsOfUser[$j]);
+    }
+  }
+  if ($vaccinsOfUser == $vaccinsAll) {
+    unset($notChooseVaccins);
+    $notChooseVaccins = array();
+  }
+} else {
+  $notChooseVaccins = $vaccinsAll;
 }
 
 require('inc/header-front.php');
@@ -63,31 +70,28 @@ if (!empty($vaccinUser)) {
   echo '</br>';
   echo $vaccinOfUser['description'];
   echo '</br>';
-  echo '<a href="vaccins.php?id=<?' . $vaccinOfUser['id'] . '&&type=supp">Supprimer de mes vaccins</a>';
+  echo '<a href="vaccins.php?id=' . $vaccinOfUser['id'] . '&&type=supp">Supprimer de mes vaccins</a>';
   echo '</br>';
   }
 }else {
 echo '<p>Vous n\'avez ajouté aucun vaccin</p>';
 }
 
-foreach ($notChooseVaccins as $notChooseVaccin) {
-  echo $notChooseVaccin['name'];
-  echo '</br>';
-  echo $notChooseVaccin['description'];
-  echo '</br>';
-  echo '<a href="vaccins.php?id=<?' . $notChooseVaccin['id'] . '&&type=add">Ahhouter à mes vaccins</a>';
-  echo '</br>';
+if (!empty($notChooseVaccins)) {
+  foreach ($notChooseVaccins as $notChooseVaccin) {
+    if(!empty($notChooseVaccin)){
+    echo $notChooseVaccin['name'];
+    echo '</br>';
+    echo $notChooseVaccin['description'];
+    echo '</br>';
+    echo '<a href="vaccins.php?id=' . $notChooseVaccin['id'] . '&&type=add">Ajouter à mes vaccins</a>';
+    echo '</br>';
+    }
+  }
+} else {
+  echo '<p>Plus de vaccins à ajouter</p>';
 }
-
-/*
 ?>
-
-<?php foreach ($vaccinsAll as $vaccin): ?>
-  <p><?php echo $vaccin['name']; ?></p>
-  <p><?php echo $vaccin['description']; ?></p>
-  <a href="vaccins.php?id=<?php echo $vaccin['id']; ?>&&type=add">Ajouter à mes vaccins</a>
-  </br>
-<?php endforeach; */?>
 
 <a href="logout.php">Déconexion</a>
 

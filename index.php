@@ -158,9 +158,5 @@ require('inc/header-front.php');
 
 <img class="home-bg" src="asset/img/accueil-bg.png" alt="">
 
-<<<<<<< HEAD
-=======
 <?php
-
->>>>>>> 3c06956bfb8b4dec9d519f58be72f9d0037f4ee8
 require('inc/footer-front.php');
