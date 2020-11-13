@@ -116,7 +116,7 @@ require('inc/header-front.php');
     <div class="loginfields">
       <form id="loginform" action="profil.php" method="post">
         <div class="logintitle">
-          <h2>Se connecter</h2>
+          <h2>Connexion</h2>
         </div>
 <form action="" method="post">
 <!-- LOGIN -->
@@ -129,7 +129,7 @@ require('inc/header-front.php');
     <input type="password" name="password" id="password" class="form-control" value="" placeholder="Mot de passe">
   </div>
   <div class="loginputs">
-    <input type="submit" name="submitconnexion" value="Connexion">
+    <input id="boutonlogin" type="submit" name="submitconnexion" value="Valider">
   </div>
 </form>
 </div>
@@ -138,7 +138,7 @@ require('inc/header-front.php');
 <div class="signupfields">
 <form id="signupform" method="post" action="profil.php"  >
   <div class="signuptitle">
-    <h2>S'inscrire</h2>
+    <h2>Inscription</h2>
   </div>
 <form method="post" action=""  >
 
@@ -167,7 +167,7 @@ require('inc/header-front.php');
       <input type="password" name="password2"  class="form-control" value="" placeholder="Confirmer le mot de passe" />
     </div>
     <div class="signupinputs">
-    <input type="submit" name="submitinscription" value="Inscription" />
+    <input id="boutonsignup" type="submit" name="submitinscription" value="Valider" />
     </div>
   </form>
 </div>
