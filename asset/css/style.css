@@ -69,16 +69,19 @@ table {
 }
 /* CSS du site */
 
+/* footer par Younès */
+
 #footer {
 	display: flex;
 	align-items: center;
 	background-color: #76D9F7;
-	width: 1519.2px;
+	width: 100%;
+	justify-content: center;
 	height: 130.2px;
 }
 
 #footer .copyright {
-	margin-left: 550px;
+
 	font-weight: bolder;
 }
 
@@ -91,14 +94,20 @@ table {
 	text-decoration: underline;
 	font-weight: bolder;
 }
-/* HEADER */
+
+/* BODY ACCUEIL par Younès*/
+/* image de fond de l'accueil */
+.home-bg {
+	display: flex;
+	max-width: 100%;
+	position: relative;
+	z-index: -1;
+}
+
+/* HEADER par Cyril*/
 
 .headernav  {
 	background-color: #EFFBFF;
-<<<<<<< HEAD
-
-=======
->>>>>>> 3c06956bfb8b4dec9d519f58be72f9d0037f4ee8
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -126,4 +135,191 @@ table {
 }
 .menunav  nav ul li a:hover, #header nav ul li a.active {
   background-color: #BFFBFF;
+}
+
+/* CONTACT */
+.bodycontact {
+background-color: #F0F0F0;
+
+}
+.contact {
+	font-size: 3em;
+	display: flex;
+	justify-content: center;
+	padding-top: 10px;
+}
+.box1 img {
+width: 100%;
+padding-top: 30px;
+margin-bottom: 100px;
+}
+.box1 {
+	position: relative;
+	height: 700px;
+	width: 500px;
+	padding-left: 50px;
+	padding-bottom: 50px;
+}
+.box2 {
+	position: absolute;
+	right: -175px;
+	top: 38%;
+	background-color: #131313;
+	color: #FFF;
+	height: 250px;
+	width : 387px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2.5em;
+}
+
+
+/* FORMULAIRES par Younès */
+
+/* LOGIN FORMULAIRE par Younès */
+
+#loginform {
+	display: flex;
+	justify-content: right;
+	padding: 20px 0 150px;
+	flex-direction: column;
+	color: black;
+	font-weight: bold;
+	overflow: hidden;
+	position: absolute;
+	text-align: right;
+	flex: 1;
+	right: 11.5%;
+	border-radius: 10%;
+	margin-top: 10px;
+	background-color: lightblue;
+}
+
+#loginform .logintitle {
+	text-align: center;
+}
+
+#loginform .logintitle h2 {
+	font-size: 1rem;
+	margin-bottom: 5px;
+	text-decoration: underline;
+}
+
+#loginform .loginfields {
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+
+#loginform .loginfields {
+	display: flex;
+	justify-content: space-between;
+}
+
+#loginform .loginfields input {
+	flex: 1;
+	max-width: 48%;
+	margin: 10px 0;
+	padding: 15px;
+	font-family: 'bebas_neueregular', cursive;
+	font-weight: 300;
+	font-size: 18px;
+	border-radius: 4px;
+	border: solid rgba(0, 0, 0, .5) 1px;
+}
+
+#loginform .loginfields input[type="submit"] {
+	background-color: red;
+	color: white;
+	border: 0;
+	outline: none;
+	cursor: pointer;
+	transition: all .2s;
+	font-family: 'alfa_slab_oneregular', cursive;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 16px;
+}
+
+#loginform .loginfields input[type="submit"]:hover {
+	background-color: brown;
+	color: white;
+}
+
+
+/* SIGNUP FORMULAIRE par Younès */
+
+#signupform	 {
+	display: flex;
+	justify-content: right;
+	padding: 20px 0 84px;
+	flex-direction: column;
+	color: black;
+	font-weight: bold;
+	overflow: hidden;
+	position: absolute;
+	text-align: right;
+	flex: 1;
+	right: 0%;
+	margin-top: 10px;
+	background-color: lightblue;
+	border-radius: 10%;
+}
+
+#signupform .signuptitle {
+	text-align: center;
+}
+
+#signupform .signuptitle h2 {
+	font-size: 1rem;
+	margin-bottom: 5px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+#signupform .signupfields {
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+
+#signupform .signupfields {
+	display: flex;
+	justify-content: space-between;
+}
+
+#signupform .signupfields input {
+	flex: 1;
+	max-width: 48%;
+	margin: 10px 0;
+	padding: 15px;
+	font-family: 'bebas_neueregular', cursive;
+	font-weight: 300;
+	font-size: 18px;
+	border-radius: 4px;
+	border: solid rgba(0, 0, 0, .5) 1px;
+	background-color: #ffb042;
+}
+
+#signupform .signupfields input[type="submit"] {
+	background-color: red;
+	color: white;
+	border: 0;
+	outline: none;
+	cursor: pointer;
+	transition: all .2s;
+	font-family: 'alfa_slab_oneregular', cursive;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 16px;
+}
+
+#signupform .signupfields input[type="submit"]:hover {
+	background-color: brown;
+	color: white;
 }

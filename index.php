@@ -113,47 +113,68 @@ require('inc/header-front.php');
 ?>
 
 <!-- Ajout Connexion (Clément Blin) -->
+    <div class="loginfields">
+      <form id="loginform" action="profil.php" method="post">
+        <div class="logintitle">
+          <h2>Se connecter</h2>
+        </div>
 <form action="" method="post">
-  <!-- LOGIN -->
-  <label for="email">E-mail</label>
-  <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
-  <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
-
+<!-- LOGIN -->
+  <div class="loginputs">
+    <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+    <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="E-mail">
+  </div>
   <!-- PASSWORD -->
-  <label for="password">Mot de passe</label>
-  <input type="password" name="password" id="password" class="form-control" value="">
-
-  <input type="submit" name="submitconnexion" value="Connexion">
+  <div class="loginputs">
+    <input type="password" name="password" id="password" class="form-control" value="" placeholder="Mot de passe">
+  </div>
+  <div class="loginputs">
+    <input type="submit" name="submitconnexion" value="Connexion">
+  </div>
 </form>
+</div>
 
-<h1>Inscription </h1>
 <!-- Inscription par julien -->
+<div class="signupfields">
+<form id="signupform" method="post" action="profil.php"  >
+  <div class="signuptitle">
+    <h2>S'inscrire</h2>
+  </div>
 <form method="post" action=""  >
 
-    <!-- SURNAME -->
-      <label for="surname">Prénom*</label>
+<!-- SURNAME -->
+    <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['surname'])) { echo $errorsIns['surname']; } ?></span>
-      <input type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" />
-    <!-- NAME -->
-      <label for="name">Nom*</label>
+      <input type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" placeholder="Prénom" />
+    </div>
+      <!-- NAME -->
+    <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['name'])) { echo $errorsIns['name']; } ?></span>
-      <input type="text" name="name"  class="form-control" value="<?php if(!empty($_POST['name'])) { echo $_POST['name']; } ?>" />
-    <!-- EMAIL -->
-      <label for="email1">E-mail*</label>
+      <input type="text" name="name"  class="form-control" value="<?php if(!empty($_POST['name'])) { echo $_POST['name']; } ?>" placeholder="Nom" />
+    </div>
+      <!-- EMAIL -->
+    <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['email1'])) { echo $errorsIns['email1']; } ?></span>
-      <input type="email" name="email1"  class="form-control" value="<?php if(!empty($_POST['email1'])) { echo $_POST['email1']; } ?>" />
-    <!-- PASSWORD1 -->
-      <label for="password1">Mot de passe*</label>
+      <input type="email" name="email1"  class="form-control" value="<?php if(!empty($_POST['email1'])) { echo $_POST['email1']; } ?>" placeholder="E-mail" />
+    </div>
+      <!-- PASSWORD1 -->
+    <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['password'])) { echo $errorsIns['password']; } ?></span>
-      <input type="password" name="password1"  class="form-control" value="" />
-    <!-- PASSWORD2 -->
-      <label for="password2">Confirmation mot de passe*</label>
-      <input type="password" name="password2"  class="form-control" value="" />
+      <input type="password" name="password1"  class="form-control" value="" placeholder="Mot de passe" />
+    </div>
+      <!-- PASSWORD2 -->
+    <div class="signupinputs">
+      <input type="password" name="password2"  class="form-control" value="" placeholder="Confirmer le mot de passe" />
+    </div>
+    <div class="signupinputs">
+    <input type="submit" name="submitinscription" value="Inscription" />
+    </div>
+  </form>
+</div>
 
-    <input type="submit" name="submitinscription" value="Je m'inscris" />
 </form>
 <?php if ($success == true): ?>
-  <p>Inscription réussis, veuillez vous connecter</p>
+  <p>Inscription réussie, veuillez vous connecter</p>
 <?php endif; ?>
 
 <img class="home-bg" src="asset/img/accueil-bg.png" alt="">
