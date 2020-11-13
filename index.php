@@ -145,7 +145,7 @@ require('inc/header-front.php');
 <!-- SURNAME -->
     <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['surname'])) { echo $errorsIns['surname']; } ?></span>
-      <input type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" placeholder="Prénom" />
+      <input id="prénom" type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" placeholder="Prénom" />
     </div>
       <!-- NAME -->
     <div class="signupinputs">
@@ -178,6 +178,7 @@ require('inc/header-front.php');
 <?php endif; ?>
 
 <img class="home-bg" src="asset/img/accueil-bg.png" alt="">
-
+<p class="home-description1">HealthBook est un carnet de vaccination électronique personnalisé qui vous permet de faire <br>un suivi de vos vaccinations obligatoires en toute simplicité et d'être alerté en temps réel lorsque<br> vous devez faire un rappel.<br><br>Pour cela, rien de plus simple: il vous suffit de créer votre compte ou de vous y connecter en <br> remplissant les formulaires ci-contre et de renseigner les dates de vos dernières injections.<br>Ensuite, HealthBook s'occupe du reste!</p>
+<img class="forms-bg" src="asset/img/forms-bg.jpeg" alt="">
 <?php
 require('inc/footer-front.php');
