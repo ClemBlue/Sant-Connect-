@@ -13,7 +13,7 @@ if(!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] == 'admin') {
   $vaccins = $query->fetchAll();
 
   $vaccin_id = $_GET['id'];
-  $vaccin_sup = $_GET['tag'];
+  $vaccin_tag = $_GET['tag'];
 
   //select id vaccins
   $sql = "SELECT * FROM vaccins WHERE id =:id_vaccins ";
@@ -22,18 +22,29 @@ if(!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] == 'admin') {
   $query->execute();
   $vaccin_ = $query->fetchAll();
 
-  // Update Status
-  if (!empty($_GET) && $_GET['tag'] == $vaccin_[0]['id']) {
+  // Update Status desactivé
+  if (!empty($_GET) && $_GET['tag'] == 'sup') {
 
     $sql = "UPDATE vaccins
             SET status = 'desactive', updated_at = NOW()
-            WHERE id = :vaccin_sup";
+            WHERE id = :vaccin_tag";
     $query = $pdo->prepare($sql);
-    $query->bindValue(':vaccin_sup',$vaccin_sup,PDO::PARAM_INT);
+    $query->bindValue(':vaccin_tag',$vaccin_id,PDO::PARAM_INT);
     $query->execute();
   }
+  // Update Status actif
+  if (!empty($_GET) && $_GET['tag'] == 'add') {
+    echo ' bv';
+    $sql = "UPDATE vaccins
+            SET status = 'actif', updated_at = NOW()
+            WHERE id = :vaccin_add";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':vaccin_add',$vaccin_id,PDO::PARAM_INT);
+    $query->execute();
 
-  if(!empty($vaccins)) { // article existe
+  }
+
+  if(!empty($vaccins)) {
     if(!empty($_POST['submited'])) { // formulaire soumis
       // FAille XSS
       $name   = trim(strip_tags($_POST['name']));
@@ -41,7 +52,7 @@ if(!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] == 'admin') {
       // Validation
       $errors = ValidationText($errors,$name,'name',3,50);
       $errors = ValidationText($errors,$description,'description',10,2000);
-
+      //UPdate un vaccin
       if(count($errors) == 0) {
         $sql = "UPDATE vaccins
                 SET name = :name,description=:description, updated_at = NOW()
@@ -67,7 +78,7 @@ require('inc/header-back.php');?>
 <a href="add_vaccin.php">Ajouter un vaccin</a>
 <?php
 
-
+  // Afficher les
   foreach ($vaccins as $vaccin) {
 
     if (!empty($vaccin) && $vaccin['status'] == 'actif') {
@@ -75,7 +86,7 @@ require('inc/header-back.php');?>
       echo '<p>Description: '.$vaccin['description'].'</p>';
       echo '<p>Status: '.$vaccin['status'].'</p>';
       echo '<a href="index.php?id='.$vaccin['id'].'&&tag=none">Editer</a>';
-      echo '<a href="index.php?id='.$vaccin['id'].'&&tag='.$vaccin['id'].'">Supprimer</a>';
+      echo '<a href="index.php?id='.$vaccin['id'].'&&tag=sup">Supprimer</a>';
   }
 }
 ?> <div class="Limite">
@@ -88,7 +99,7 @@ require('inc/header-back.php');?>
       echo '<p>Description: '.$vaccin['description'].'</p>';
       echo '<p>Status: '.$vaccin['status'].'</p>';
       echo '<a href="index.php?id='.$vaccin['id'].'&&tag=none">Editer</a>';
-      echo '<a href="index.php?id='.$vaccin['id'].'&&tag=none">Ajouter</a>';
+      echo '<a href="index.php?id='.$vaccin['id'].'&&tag=add">Ajouter</a>';
   }
 }
 ?>
