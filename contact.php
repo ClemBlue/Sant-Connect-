@@ -39,7 +39,7 @@ include('inc/header-front.php');
       </div>
     </div>
    </div>
-
+ </div>
 </div>
 
 
