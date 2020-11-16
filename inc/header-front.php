@@ -18,7 +18,7 @@
                <li><a class="active" href="#">Accueil</a></li>
                <li><a href="#">Contact</a></li>
                <li><a href="#">gggggg</a></li>
-               <li><a href="admin/index.php">back</a></li>
+               <li><a href="admin/index.php?id=1&&tag=1">back</a></li>
              </ul>
            </nav>
          </div>
