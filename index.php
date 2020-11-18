@@ -112,73 +112,81 @@ require('inc/header-front.php');
 
 ?>
 
+
 <!-- Ajout Connexion (Clément Blin) -->
-    <div class="loginfields">
-      <form id="loginform" action="profil.php" method="post">
-        <div class="logintitle">
-          <h2>Connexion</h2>
-        </div>
+<div class="wrapacceuil">
+ <div class="details">
+  <p>HealthBook est un carnet de vaccination électronique personnalisé qui vous permet de faire <br>un suivi de vos vaccinations obligatoires en toute simplicité et d'être alerté en temps réel lorsque<br> vous devez faire un rappel.<br><br>Pour cela, rien de plus simple: il vous suffit de créer votre compte ou de vous y connecter en <br> remplissant les formulaires ci-contre et de renseigner les dates de vos dernières injections.<br>Ensuite, HealthBook s'occupe du reste!</p>
+ </div>
+  <div class="form">
+   <div class="formconnexion">
+     <div class="titreform">
+      <h2>Connexion</h2>
+     </div>
 <form action="" method="post">
 <!-- LOGIN -->
-  <div class="loginputs">
+  <div>
     <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
     <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="E-mail">
   </div>
   <!-- PASSWORD -->
-  <div class="loginputs">
+  <div>
     <input type="password" name="password" id="password" class="form-control" value="" placeholder="Mot de passe">
   </div>
-  <div class="loginputs">
-    <input id="boutonlogin" type="submit" name="submitconnexion" value="Valider">
+  <div>
+    <input type="submit" name="submitconnexion" value="Valider">
   </div>
 </form>
 </div>
 
 <!-- Inscription par julien -->
-<div class="signupfields">
-<form id="signupform" method="post" action="profil.php"  >
-  <div class="signuptitle">
+<div class="forminscription">
+  <div class="titreform">
     <h2>Inscription</h2>
   </div>
 <form method="post" action=""  >
 
 <!-- SURNAME -->
-    <div class="signupinputs">
+    <div>
       <span class="error"><?php if(!empty($errorsIns['surname'])) { echo $errorsIns['surname']; } ?></span>
       <input id="prénom" type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" placeholder="Prénom" />
     </div>
       <!-- NAME -->
-    <div class="signupinputs">
+    <div>
       <span class="error"><?php if(!empty($errorsIns['name'])) { echo $errorsIns['name']; } ?></span>
       <input type="text" name="name"  class="form-control" value="<?php if(!empty($_POST['name'])) { echo $_POST['name']; } ?>" placeholder="Nom" />
     </div>
       <!-- EMAIL -->
-    <div class="signupinputs">
+    <div>
       <span class="error"><?php if(!empty($errorsIns['email1'])) { echo $errorsIns['email1']; } ?></span>
       <input type="email" name="email1"  class="form-control" value="<?php if(!empty($_POST['email1'])) { echo $_POST['email1']; } ?>" placeholder="E-mail" />
     </div>
       <!-- PASSWORD1 -->
-    <div class="signupinputs">
+    <div>
       <span class="error"><?php if(!empty($errorsIns['password'])) { echo $errorsIns['password']; } ?></span>
       <input type="password" name="password1"  class="form-control" value="" placeholder="Mot de passe" />
     </div>
       <!-- PASSWORD2 -->
-    <div class="signupinputs">
+    <div>
       <input type="password" name="password2"  class="form-control" value="" placeholder="Confirmer le mot de passe" />
     </div>
-    <div class="signupinputs">
+    <div>
     <input id="boutonsignup" type="submit" name="submitinscription" value="Valider" />
     </div>
-  </form>
+   </form>
+  </div>
+ </div>
 </div>
 
-</form>
+
+
+
 <?php if ($success == true): ?>
   <p>Inscription réussie, veuillez vous connecter</p>
 <?php endif; ?>
 
-<img class="home-bg" src="asset/img/accueil-bg.png" alt="">
-<p class="home-description1">HealthBook est un carnet de vaccination électronique personnalisé qui vous permet de faire <br>un suivi de vos vaccinations obligatoires en toute simplicité et d'être alerté en temps réel lorsque<br> vous devez faire un rappel.<br><br>Pour cela, rien de plus simple: il vous suffit de créer votre compte ou de vous y connecter en <br> remplissant les formulaires ci-contre et de renseigner les dates de vos dernières injections.<br>Ensuite, HealthBook s'occupe du reste!</p>
-<img class="forms-bg" src="asset/img/forms-bg.jpeg" alt="">
+
+</div>
+
 <?php
 require('inc/footer-front.php');
