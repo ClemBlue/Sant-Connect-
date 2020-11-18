@@ -81,7 +81,7 @@ if(!empty($_POST['submitconnexion'])) {
     $query->execute();
     $user =$query->fetch();
 
-    if(!empty($user)){
+    if(!empty($user) && $user['status'] == 'active'){
       $hashpassword = $user['password'];
       if (password_verify($password, $user['password'])) {
         $_SESSION['user'] = array(
@@ -100,7 +100,7 @@ if(!empty($_POST['submitconnexion'])) {
       }
 
     } else {
-      $errors['email'] = 'Error credential';
+      $errors['email'] = 'Mauvais utilisateur ou compte désactivé par un admin.';
     }
   } else {
     $errors['email'] = 'Veuillez renseigner ce champ';
