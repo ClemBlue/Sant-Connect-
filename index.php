@@ -120,20 +120,20 @@ require('inc/header-front.php');
  </div>
   <div class="form">
    <div class="formconnexion">
-     <div class="titreform">
+     <div class="formtitle">
       <h2>Connexion</h2>
      </div>
 <form action="" method="post">
 <!-- LOGIN -->
-  <div>
+  <div class="loginputs">
     <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
     <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="E-mail">
   </div>
   <!-- PASSWORD -->
-  <div>
+  <div class="loginputs">
     <input type="password" name="password" id="password" class="form-control" value="" placeholder="Mot de passe">
   </div>
-  <div>
+  <div class="formbtn">
     <input type="submit" name="submitconnexion" value="Valider">
   </div>
 </form>
@@ -141,36 +141,36 @@ require('inc/header-front.php');
 
 <!-- Inscription par julien -->
 <div class="forminscription">
-  <div class="titreform">
+  <div class="formtitle">
     <h2>Inscription</h2>
   </div>
 <form method="post" action=""  >
 
 <!-- SURNAME -->
-    <div>
+    <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['surname'])) { echo $errorsIns['surname']; } ?></span>
       <input id="prénom" type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" placeholder="Prénom" />
     </div>
       <!-- NAME -->
-    <div>
+    <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['name'])) { echo $errorsIns['name']; } ?></span>
       <input type="text" name="name"  class="form-control" value="<?php if(!empty($_POST['name'])) { echo $_POST['name']; } ?>" placeholder="Nom" />
     </div>
       <!-- EMAIL -->
-    <div>
+    <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['email1'])) { echo $errorsIns['email1']; } ?></span>
       <input type="email" name="email1"  class="form-control" value="<?php if(!empty($_POST['email1'])) { echo $_POST['email1']; } ?>" placeholder="E-mail" />
     </div>
       <!-- PASSWORD1 -->
-    <div>
+    <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['password'])) { echo $errorsIns['password']; } ?></span>
       <input type="password" name="password1"  class="form-control" value="" placeholder="Mot de passe" />
     </div>
       <!-- PASSWORD2 -->
-    <div>
-      <input type="password" name="password2"  class="form-control" value="" placeholder="Confirmer le mot de passe" />
+    <div class="signupinputs">
+      <input type="password" name="password2"  class="form-control" value="" placeholder="Confirmation mot de passe" />
     </div>
-    <div>
+    <div class="formbtn">
     <input id="boutonsignup" type="submit" name="submitinscription" value="Valider" />
     </div>
    </form>
