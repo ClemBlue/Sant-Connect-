@@ -131,6 +131,7 @@ table {
 
 .details {
 	font-family: 'montserratregular', sans-serif;
+	text-align: center;
   font-weight: bold;
   height: fit-content;
   background-color: lightblue;
@@ -139,6 +140,7 @@ table {
   line-height: 1.3;
 	position: relative;
 	top: 55%;
+	margin-left: 0.8%;
 
 }
 .form {
@@ -146,20 +148,78 @@ background: url(../img/forms-bg.jpeg);
 background-size: cover;
 background-position: center;
 position: relative;
-height: 333px;
+height: 350px;
 border-radius: 10%;
-top: 25%;
+top: 10%;
 display: flex;
 justify-content: space-around;
 width: 500px;
-padding-top: 6%;
+padding-top: 2%;
+margin-right: 2%;
+
 }
-.formconnexion {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.test {
+
+}
+.loginputs {
+	margin-bottom: 24px;
 }
 
+.loginputs input {
+	border-radius: 5px 5px;
+	height: 50px;
+	width: 100%;
+
+}
+
+.loginputs input::placeholder {
+	font-family: 'montserratregular', sans-serif;
+}
+
+.signupinputs {
+	margin-bottom: 15px;
+}
+
+.signupinputs input {
+	border-radius: 5px 5px;
+
+	width: 100%;
+}
+
+.signupinputs input::placeholder {
+	font-family: 'montserratregular', sans-serif;
+}
+.formtitle {
+text-align: center;
+
+border-radius: 20px;
+DISPLAY: flex;
+FLEX-DIRECTION: column;
+MARGIN-BOTTOM: 5%;
+background-color: white;
+}
+
+ .formtitle h2 {
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: 'montserratregular', sans-serif;
+}
+.formbtn input {
+	background-color: skyblue;
+	margin-right: 50px;
+	font-family: 'montserratregular', sans-serif;
+	font-weight: bold;
+	border-radius: 20px 20px;
+}
+
+.formbtn {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.formbtn :hover {
+	color: white;
+}
 /* FOOTER par Younès */
 
 #footer {
@@ -277,7 +337,7 @@ justify-content: center;
 }
 
 
-/* RESPONSIVE  */
+/* RESPONSIVE CONTACT */
 
 
 @media screen and (max-width:	980px )
@@ -320,4 +380,17 @@ justify-content: center;
 		flex-direction: column;
 		align-items: center;
 	}
+}
+/* RESPONSIVE ACCUEIL */
+  @media screen and (max-width:	870px )
+{
+	.form, .forminscription, .formconnexion {
+	padding: 10px;
+	}
+	.form {
+		display: flex;
+		flex-direction: column;
+
+	}
+
 }
