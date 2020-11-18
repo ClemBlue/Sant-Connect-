@@ -81,7 +81,7 @@ if(!empty($_POST['submitconnexion'])) {
     $query->execute();
     $user =$query->fetch();
 
-    if(!empty($user)){
+    if(!empty($user) && $user['status'] == 'active'){
       $hashpassword = $user['password'];
       if (password_verify($password, $user['password'])) {
         $_SESSION['user'] = array(
@@ -100,7 +100,7 @@ if(!empty($_POST['submitconnexion'])) {
       }
 
     } else {
-      $errors['email'] = 'Error credential';
+      $errors['email'] = 'Mauvais utilisateur ou compte désactivé par un admin.';
     }
   } else {
     $errors['email'] = 'Veuillez renseigner ce champ';
@@ -113,36 +113,34 @@ require('inc/header-front.php');
 ?>
 
 <!-- Ajout Connexion (Clément Blin) -->
-    <div class="loginfields">
-      <form id="loginform" action="profil.php" method="post">
-        <div class="logintitle">
-          <h2>Se connecter</h2>
-        </div>
-<form action="" method="post">
-<!-- LOGIN -->
-  <div class="loginputs">
-    <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
-    <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="E-mail">
-  </div>
-  <!-- PASSWORD -->
-  <div class="loginputs">
-    <input type="password" name="password" id="password" class="form-control" value="" placeholder="Mot de passe">
-  </div>
-  <div class="loginputs">
-    <input type="submit" name="submitconnexion" value="Connexion">
-  </div>
-</form>
+<div class="loginfields">
+  <form id="loginform" action="" method="post">
+    <div class="logintitle">
+      <h2>Se connecter</h2>
+    </div>
+    <!-- LOGIN -->
+    <div class="loginputs">
+      <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+      <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="E-mail">
+    </div>
+    <!-- PASSWORD -->
+    <div class="loginputs">
+      <input type="password" name="password" id="password" class="form-control" value="" placeholder="Mot de passe">
+    </div>
+    <div class="loginputs">
+      <input type="submit" name="submitconnexion" value="Connexion">
+    </div>
+  </form>
 </div>
 
 <!-- Inscription par julien -->
 <div class="signupfields">
-<form id="signupform" method="post" action="profil.php"  >
-  <div class="signuptitle">
-    <h2>S'inscrire</h2>
-  </div>
-<form method="post" action=""  >
+  <form id="signupform" method="post" action=""  >
+    <div class="signuptitle">
+      <h2>S'inscrire</h2>
+    </div>
 
-<!-- SURNAME -->
+    <!-- SURNAME -->
     <div class="signupinputs">
       <span class="error"><?php if(!empty($errorsIns['surname'])) { echo $errorsIns['surname']; } ?></span>
       <input type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" placeholder="Prénom" />

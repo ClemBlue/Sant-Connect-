@@ -24,9 +24,11 @@ function ValidationText($errors,$data,$key,$min,$max)
   }
   return $errors;
 }
+
 function dateFR($value){
   return date('d/m/y à H:i',strtotime($value));
 }
+
 function generateRandomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
