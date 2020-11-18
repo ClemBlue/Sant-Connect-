@@ -67,47 +67,257 @@ table {
 .clear {
 	*zoom:1;
 }
-/* CSS du site */
+
+/* Fonts du site */
+@font-face {
+    font-family: 'montserratregular';
+    src: url('../fonts/montserrat-regular-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* HEADER par Cyril*/
+
+.headernav  {
+	background-color: #EFFBFF;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 83px;
+	width: 100%;
+}
+
+.headernav ul  {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.logo p {
+	display: flex;
+	font-family: 'montserratregular', sans-serif;
+	font-weight: bold;
+	text-transform: capitalize;
+	margin-left: 40px;
+}
+
+.headernav nav ul li a {
+	background-color: #EFFBFF;
+	color: #333;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 20px 20px;
+	width: 100%;
+	border-radius: 10px;
+	font-family: 'montserratregular', sans-serif;
+	font-weight: bold;
+}
+
+.menunav  nav ul li a:hover, #header nav ul li a.active {
+  background-color: #BFFBFF;
+}
+
+/* BODY ACCUEIL par Younès*/
+.wrapacceuil {
+	background: url(../img/accueil-bg.png);
+	background-size: cover;
+  background-position: center;
+	height: 800px;
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.details {
+	font-family: 'montserratregular', sans-serif;
+  font-weight: bold;
+  height: fit-content;
+  background-color: lightblue;
+  padding: 15px;
+  border-radius: 10px 30px;
+  line-height: 1.3;
+	position: relative;
+	top: 55%;
+
+}
+.form {
+background: url(../img/forms-bg.jpeg);
+background-size: cover;
+background-position: center;
+position: relative;
+height: 333px;
+border-radius: 10%;
+top: 25%;
+display: flex;
+justify-content: space-around;
+width: 500px;
+padding-top: 6%;
+}
+.formconnexion {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* FOOTER par Younès */
 
 #footer {
 	display: flex;
 	align-items: center;
 	background-color: #76D9F7;
-	width: 1519.2px; 
+	width: 100%;
+	justify-content: center;
 	height: 130.2px;
+
 }
 
 #footer .copyright {
-	margin-left: 550px;
+	font-family: 'montserratregular', sans-serif;
 	font-weight: bolder;
 }
 
 #footer a{
 	color: white;
 	text-decoration: none;
+	font-family: 'montserratregular', sans-serif;
 }
 
 #footer a:hover{
 	text-decoration: underline;
 	font-weight: bolder;
 }
-/* HEADER */
 
-.headernav  {
-	background-color: #BCEFFF;
+/* FORMULAIRES ACCUEIL par Younès */
+
+
+/* PAGE CONTACT par Cyril*/
+body {
+	background-color: #F0F0F0;
+	width: 100%;
+	font-family: 'montserratregular',  sans-serif;
+}
+.wrap {
 	display: flex;
-	justify-content: space-between;
-	height: 83px
+	align-items: center;
+	flex-direction: row;
 
 }
-.headernav ul  {
+.bodycontact {
+	width: 50%;
+	display: flex;
+
+}
+
+.contact {
+	font-size: 3em;
+	display: flex;
+	justify-content: center;
+	padding-top: 10px;
+}
+
+.box1 img {
+width: 100%;
+padding-top: 14px;
+}
+
+.box1 {
+position: relative;
+	height: 100%;
+	width: 75%;
+	padding: 50px;
+ }
+
+.bodycontact2 {
+	width: 40%;
+	display: flex;
+}
+.equipe {
+	position: relative;
+height: 25%;
+line-height: 2.5;
+width: 50%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.equipe img {
+	margin-right: 30px;
+	height: 180px;
+	border-radius: 30px;
+}
+.equipe p {
+	font-style: italic;
+}
+.equipe h2   {
+	font-weight: bold;
+	font-size: 2.5em;
+}
+.bigbox {
 	display: flex;
 }
 
-.headernav nav ul li a {
-	text-transform: uppercase;
-	text-decoration: none;
-	padding: 8px 20px ;
+/* PAGE MENTIONS LEGALES par Younès */
+
+.mentionbody {
+	background-color: lightgray;
+}
+
+.mentiontitle {
+	font-family: 'montserratregular', sans-serif;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: underline;
+}
+
+.mention{
+	font-family: 'montserratregular', sans-serif;
+	text-align: center;
+	line-height: 1.2;
+}
 
 
+/* RESPONSIVE  */
+
+
+@media screen and (max-width:	980px )
+{
+ .wrap {
+	display: flex;
+	flex-direction: column;
+	}
+	.bigbox {
+		display: flex;
+		flex-direction: column;
+	}
+	.bodycontact2 {
+		width: 50%;
+		height: 25%;
+		display: flex;
+		justify-content: center;
+		padding: 10px 0 10px 0;
+	}
+	.box1 {
+		height: 50%;
+		width: 100%;
+	}
+	.box1 img {
+		width: 100%;
+	}
+}
+@media screen and (max-width:	600px )
+{
+	.headernav {
+		display: flex;
+		flex-direction: column;
+	}
+	.menunav  ul li a {
+		display: flex;
+		flex-direction: column;
+	}
+	.minibox1 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }

@@ -4,6 +4,7 @@ session_start();
 require('inc/pdo.php');
 require('inc/function.php');
 
+$success = false;
 // Inscription //
 $errorsIns = array();
 if(!empty($_POST['submitinscription'])) {
@@ -54,7 +55,7 @@ if(!empty($_POST['submitinscription'])) {
     // generate token
     // INSERT INTO
     $sql = "INSERT INTO users (surname,name,email,password,created_at,token,role,status)
-                        VALUES(:surname,:name,:email1,:password,NOW(),:token,'user','active')";
+                        VALUES(:surname,:name,:email1,:password,NOW(),:token,'user','actif')";
       $query = $pdo->prepare($sql);
       $query->bindValue(':surname',$surname,PDO::PARAM_STR);
       $query->bindValue(':name',$name,PDO::PARAM_STR);
@@ -62,6 +63,7 @@ if(!empty($_POST['submitinscription'])) {
       $query->bindValue(':password',$hashPassword,PDO::PARAM_STR);
       $query->bindValue(':token',$token,PDO::PARAM_STR);
       $query->execute();
+      $success = true;
   }
 }
 
@@ -72,6 +74,7 @@ $errors = array();
 if(!empty($_POST['submitconnexion'])) {
   $email = cleanXss($_POST['email']);
   $password = cleanXss($_POST['password']);
+
   if (!empty($email) && !empty($password)) {
     $sql = "SELECT * FROM users WHERE email = :email";
     $query = $pdo->prepare($sql);
@@ -79,7 +82,7 @@ if(!empty($_POST['submitconnexion'])) {
     $query->execute();
     $user =$query->fetch();
 
-    if(!empty($user)){
+    if(!empty($user) && $user['status'] == 'actif'){
       $hashpassword = $user['password'];
       if (password_verify($password, $user['password'])) {
         $_SESSION['user'] = array(
@@ -90,68 +93,112 @@ if(!empty($_POST['submitconnexion'])) {
           'role' => $user['role'],
           'ip' => $_SERVER['REMOTE_ADDR']
         );
+        // header('Location: profil.php');
+        // exit();
 
       } else {
         $errors['email'] = 'Error credential';
       }
 
     } else {
-      $errors['email'] = 'Error credential';
+      $errors['email'] = 'Mauvais utilisateur ou compte désactivé par un admin.';
     }
   } else {
     $errors['email'] = 'Veuillez renseigner ce champ';
   }
 }
-
+//vérification role admin
+$user_role= 'none';
+$role= 'none';
+if (!empty($_SESSION)) {
+  $sql = "SELECT role FROM users WHERE id = :id";
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':id',$_SESSION['user']['id'],PDO::PARAM_INT);
+  $query->execute();
+  $user_role = $query->fetch();
+  $role = $user_role['role'];
+}
 
 require('inc/header-front.php');
 
 ?>
 
+
 <!-- Ajout Connexion (Clément Blin) -->
+<div class="wrapacceuil">
+ <div class="details">
+  <p>HealthBook est un carnet de vaccination électronique personnalisé qui vous permet de faire <br>un suivi de vos vaccinations obligatoires en toute simplicité et d'être alerté en temps réel lorsque<br> vous devez faire un rappel.<br><br>Pour cela, rien de plus simple: il vous suffit de créer votre compte ou de vous y connecter en <br> remplissant les formulaires ci-contre et de renseigner les dates de vos dernières injections.<br>Ensuite, HealthBook s'occupe du reste!</p>
+ </div>
+  <div class="form">
+   <div class="formconnexion">
+     <div class="titreform">
+      <h2>Connexion</h2>
+     </div>
 <form action="" method="post">
-  <!-- LOGIN -->
-  <label for="email">E-mail</label>
-  <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
-  <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
-
+<!-- LOGIN -->
+  <div>
+    <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+    <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="E-mail">
+  </div>
   <!-- PASSWORD -->
-  <label for="password">Mot de passe</label>
-  <input type="password" name="password" id="password" class="form-control" value="">
-
-  <input type="submit" name="submitconnexion" value="Connexion">
-  <a href="mot_de_passe_oublier.php">Mod de passe oublié</a>
+  <div>
+    <input type="password" name="password" id="password" class="form-control" value="" placeholder="Mot de passe">
+  </div>
+  <div>
+    <input type="submit" name="submitconnexion" value="Valider">
+    <a href="mot_de_passe_oublier.php">Mot de passe oublié</a>
+  </div>
 </form>
+<?php if ($role == 'admin'): ?>
+  <a href="admin/index.php?id=1&&tag">Back</a>
+<?php endif; ?>
+</div>
 
-<h1>Inscription </h1>
 <!-- Inscription par julien -->
+<div class="forminscription">
+  <div class="titreform">
+    <h2>Inscription</h2>
+  </div>
 <form method="post" action=""  >
 
-    <!-- SURNAME -->
-      <label for="surname">Prénom*</label>
+<!-- SURNAME -->
+    <div>
       <span class="error"><?php if(!empty($errorsIns['surname'])) { echo $errorsIns['surname']; } ?></span>
-      <input type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" />
-    <!-- NAME -->
-      <label for="name">Nom*</label>
+      <input id="prénom" type="text" name="surname"  class="form-control" value="<?php if(!empty($_POST['surname'])) { echo $_POST['surname']; } ?>" placeholder="Prénom" />
+    </div>
+      <!-- NAME -->
+    <div>
       <span class="error"><?php if(!empty($errorsIns['name'])) { echo $errorsIns['name']; } ?></span>
-      <input type="text" name="name"  class="form-control" value="<?php if(!empty($_POST['name'])) { echo $_POST['name']; } ?>" />
-    <!-- EMAIL -->
-      <label for="email1">E-mail*</label>
+      <input type="text" name="name"  class="form-control" value="<?php if(!empty($_POST['name'])) { echo $_POST['name']; } ?>" placeholder="Nom" />
+    </div>
+      <!-- EMAIL -->
+    <div>
       <span class="error"><?php if(!empty($errorsIns['email1'])) { echo $errorsIns['email1']; } ?></span>
-      <input type="email" name="email1"  class="form-control" value="<?php if(!empty($_POST['email1'])) { echo $_POST['email1']; } ?>" />
-    <!-- PASSWORD1 -->
-      <label for="password1">Mot de passe*</label>
+      <input type="email" name="email1"  class="form-control" value="<?php if(!empty($_POST['email1'])) { echo $_POST['email1']; } ?>" placeholder="E-mail" />
+    </div>
+      <!-- PASSWORD1 -->
+    <div>
       <span class="error"><?php if(!empty($errorsIns['password'])) { echo $errorsIns['password']; } ?></span>
-      <input type="password" name="password1"  class="form-control" value="" />
-    <!-- PASSWORD2 -->
-      <label for="password2">Confirmation mot de passe*</label>
-      <input type="password" name="password2"  class="form-control" value="" />
+      <input type="password" name="password1"  class="form-control" value="" placeholder="Mot de passe" />
+    </div>
+      <!-- PASSWORD2 -->
+    <div>
+      <input type="password" name="password2"  class="form-control" value="" placeholder="Confirmer le mot de passe" />
+    </div>
+    <div>
+    <input id="boutonsignup" type="submit" name="submitinscription" value="Valider" />
+    </div>
+   </form>
+  </div>
+ </div>
+</div>
 
-    <input type="submit" name="submitinscription" value="Je m'inscris" />
-</form>
+<?php if ($success == true): ?>
+  <p>Inscription réussie, veuillez vous connecter</p>
+<?php endif; ?>
+
+
+</div>
+
 <?php
-
-
-
-
 require('inc/footer-front.php');
