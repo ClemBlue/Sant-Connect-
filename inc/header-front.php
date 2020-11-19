@@ -9,9 +9,15 @@
     <body>
       <header>
       <div class="headernav">
+        <div class="logotitre">
        <div class="logo">
-        <p>Healthbook (insérer le logo ici)</p>
+        <img src="asset/img/logohb.png" alt="">
        </div>
+       <div class="titrenav">
+        <h1>Healthbook</h1>
+       </div>
+       </div>
+
         <div class="menunav">
            <nav>
              <ul>

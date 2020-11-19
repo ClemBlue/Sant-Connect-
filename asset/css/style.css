@@ -93,15 +93,23 @@ table {
 	display: flex;
 	justify-content: flex-end;
 }
-
-.logo p {
+.logotitre {
 	display: flex;
+	align-items: center;
+	width: 40%
+}
+.titrenav h1 {
 	font-family: 'montserratregular', sans-serif;
 	font-weight: bold;
 	text-transform: capitalize;
-	margin-left: 40px;
+	font-size: 1.5vw;
 }
-
+.logo {
+	width: 36%
+}
+.logo img {
+	width: 58%;
+}
 .headernav nav ul li a {
 	background-color: #EFFBFF;
 	color: #333;
@@ -112,8 +120,11 @@ table {
 	border-radius: 10px;
 	font-family: 'montserratregular', sans-serif;
 	font-weight: bold;
-}
 
+}
+.menunav {
+		width: 100%
+}
 .menunav  nav ul li a:hover, #header nav ul li a.active {
   background-color: #BFFBFF;
 }
@@ -538,4 +549,11 @@ justify-content: center;
 		height: 1000px;
 
 	}
+}
+  @media screen and (max-height:	600px )
+{
+	.menunav {
+
+	}
+
 }
