@@ -143,7 +143,12 @@ $sql = "SELECT COUNT(id_user) FROM user_vaccin";
 $query = $pdo->prepare($sql);
 $query->execute();
 $nb_allvaccins_for_users = $query->fetch();
-$moyenne_devaccins_paruser = $nb_allvaccins_for_users['COUNT(id_user)']/$nb_users_vaccins['COUNT(id_user)'];
+if ($nb_users_vaccins==0){
+    $nb_users_vaccins['COUNT(id_user)']=1;
+    $moyenne_devaccins_paruser = $nb_allvaccins_for_users['COUNT(id_user)']/$nb_users_vaccins['COUNT(id_user)'];
+}else{
+    $moyenne_devaccins_paruser = $nb_allvaccins_for_users['COUNT(id_user)']/$nb_users_vaccins['COUNT(id_user)'];
+}
 
 
 require('inc/header-back.php');
