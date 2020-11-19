@@ -3,7 +3,10 @@
 session_start();
 require('inc/pdo.php');
 require('inc/function.php');
-
+if (empty($_SESSION)) {
+  header('Location: index.php');
+  exit();
+}
 // Récupération des données du user depuis la session //
 $nom = $_SESSION['user']['nom'];
 $prenom = $_SESSION['user']['prenom'];

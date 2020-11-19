@@ -55,7 +55,7 @@ if(!empty($_POST['submitinscription'])) {
     // generate token
     // INSERT INTO
     $sql = "INSERT INTO users (surname,name,email,password,created_at,token,role,status)
-                        VALUES(:surname,:name,:email1,:password,NOW(),:token,'user','active')";
+                        VALUES(:surname,:name,:email1,:password,NOW(),:token,'user','actif')";
       $query = $pdo->prepare($sql);
       $query->bindValue(':surname',$surname,PDO::PARAM_STR);
       $query->bindValue(':name',$name,PDO::PARAM_STR);
@@ -74,6 +74,7 @@ $errors = array();
 if(!empty($_POST['submitconnexion'])) {
   $email = cleanXss($_POST['email']);
   $password = cleanXss($_POST['password']);
+
   if (!empty($email) && !empty($password)) {
     $sql = "SELECT * FROM users WHERE email = :email";
     $query = $pdo->prepare($sql);
@@ -81,7 +82,7 @@ if(!empty($_POST['submitconnexion'])) {
     $query->execute();
     $user =$query->fetch();
 
-    if(!empty($user) && $user['status'] == 'active'){
+    if(!empty($user) && $user['status'] == 'actif'){
       $hashpassword = $user['password'];
       if (password_verify($password, $user['password'])) {
         $_SESSION['user'] = array(
@@ -93,7 +94,7 @@ if(!empty($_POST['submitconnexion'])) {
           'ip' => $_SERVER['REMOTE_ADDR']
         );
         header('Location: profil.php');
-        exit();
+        // exit();
 
       } else {
         $errors['email'] = 'Error credential';
@@ -106,7 +107,17 @@ if(!empty($_POST['submitconnexion'])) {
     $errors['email'] = 'Veuillez renseigner ce champ';
   }
 }
-
+//vérification role admin
+$user_role= 'none';
+$role= 'none';
+if (!empty($_SESSION)) {
+  $sql = "SELECT role FROM users WHERE id = :id";
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':id',$_SESSION['user']['id'],PDO::PARAM_INT);
+  $query->execute();
+  $user_role = $query->fetch();
+  $role = $user_role['role'];
+}
 
 require('inc/header-front.php');
 
@@ -115,36 +126,40 @@ require('inc/header-front.php');
 
 <!-- Ajout Connexion (Clément Blin) -->
 <div class="wrapacceuil">
- <div class="details">
-  <p>HealthBook est un carnet de vaccination électronique personnalisé qui vous permet de faire <br>un suivi de vos vaccinations obligatoires en toute simplicité et d'être alerté en temps réel lorsque<br> vous devez faire un rappel.<br><br>Pour cela, rien de plus simple: il vous suffit de créer votre compte ou de vous y connecter en <br> remplissant les formulaires ci-contre et de renseigner les dates de vos dernières injections.<br>Ensuite, HealthBook s'occupe du reste!</p>
- </div>
   <div class="form">
    <div class="formconnexion">
      <div class="formtitle">
       <h2>Connexion</h2>
      </div>
-<form action="" method="post">
-<!-- LOGIN -->
-  <div class="loginputs">
-    <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
-    <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="E-mail">
-  </div>
-  <!-- PASSWORD -->
-  <div class="loginputs">
-    <input type="password" name="password" id="password" class="form-control" value="" placeholder="Mot de passe">
-  </div>
-  <div class="formbtn">
-    <input type="submit" name="submitconnexion" value="Valider">
-  </div>
-</form>
-</div>
+      <form action="" method="post">
+      <!-- LOGIN -->
+        <div class="loginputs">
+          <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
+          <input type="email" id="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>" placeholder="E-mail">
+        </div>
+        <!-- PASSWORD -->
+        <div class="loginputs">
+          <input type="password" name="password" id="password" class="form-control" value="" placeholder="Mot de passe">
+        </div>
+        <div class="formbtn">
+          <input type="submit" name="submitconnexion" value="Valider">
+        </div>
+      </form>
+      <div class="link">
+        <a href="mot_de_passe_oublier.php">Mot de passe oublié</a>
+        <?php if ($role == 'admin'): ?>
+          <a href="admin/index.php?id=1&&tag">Back</a>
+        <?php endif; ?>
+        </div>
+      </div>
 
-<!-- Inscription par julien -->
-<div class="forminscription">
-  <div class="formtitle">
-    <h2>Inscription</h2>
-  </div>
-<form method="post" action=""  >
+
+      <!-- Inscription par julien -->
+      <div class="forminscription">
+        <div class="formtitle">
+          <h2>Inscription</h2>
+        </div>
+      <form method="post" action=""  >
 
 <!-- SURNAME -->
     <div class="signupinputs">
@@ -172,18 +187,22 @@ require('inc/header-front.php');
     </div>
     <div class="formbtn">
     <input id="boutonsignup" type="submit" name="submitinscription" value="Valider" />
+    <div class="succes">
+      <?php if ($success == true): ?>
+        <p>Inscription réussie, veuillez vous connecter</p>
+      <?php endif; ?>
+    </div>
     </div>
    </form>
   </div>
  </div>
+ <div class="details">
+  <p>HealthBook est un carnet de vaccination électronique personnalisé qui vous permet de faire <br>un suivi de vos vaccinations obligatoires en toute simplicité et d'être alerté en temps réel lorsque<br> vous devez faire un rappel.<br><br>Pour cela, rien de plus simple: il vous suffit de créer votre compte ou de vous y connecter en <br> remplissant les formulaires ci-contre et de renseigner les dates de vos dernières injections.<br>Ensuite, HealthBook s'occupe du reste!</p>
+ </div>
+ <!-- <img class="img_background"src="asset/img/accueil-bg.png" alt="background"> -->
 </div>
 
 
-
-
-<?php if ($success == true): ?>
-  <p>Inscription réussie, veuillez vous connecter</p>
-<?php endif; ?>
 
 
 </div>
