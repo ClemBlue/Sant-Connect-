@@ -67,7 +67,6 @@ if(!empty($_POST['submitvaccin'])){
   $date_vaccin = cleanXss($_POST['date_vaccin']);
   $errors = ValidationText($errors,$name,'name',2,50);
   if(!empty($date_vaccin)){
-    echo 'date fournis';
   } else {
     $errors['date_vaccin'] = 'Veuillez renseigner ce champ';
   }
@@ -78,9 +77,6 @@ if(!empty($_POST['submitvaccin'])){
     $query->bindValue(':status', $status,PDO::PARAM_STR);
     $query->execute();
     $idOfUseresVaccin = $query->fetch();
-    debug($idOfUseresVaccin);
-    echo $date_vaccin;
-    echo $userID;
     if (!empty($idOfUseresVaccin)) {
       $sql = "UPDATE user_vaccin SET date_vaccin = :date_vaccin WHERE id_vaccin = :id_vaccin && id_user = :userID";
       $query = $pdo->prepare($sql);
@@ -88,8 +84,6 @@ if(!empty($_POST['submitvaccin'])){
       $query->bindValue(':userID',$userID,PDO::PARAM_INT);
       $query->bindValue(':id_vaccin',$idOfUseresVaccin,PDO::PARAM_INT);
       $query->execute();
-      $affected_rows = $query->rowCount();
-      echo $affected_rows;
     } else {
       $errors['name'] = 'Mauvais nom de vaccin entré OU vaccin non disponible';
     }
