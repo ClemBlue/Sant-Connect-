@@ -289,7 +289,7 @@ require('inc/navbar.php');
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Vaccins disponible
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Vaccins disponibles
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -319,7 +319,7 @@ require('inc/navbar.php');
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Nombre moyen vaccins par utilisateur</div>
+                                                Nombre moyen de vaccins par utilisateur</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo floor($moyenne_devaccins_paruser); ?></div>
                                         </div>
                                         <div class="col-auto">

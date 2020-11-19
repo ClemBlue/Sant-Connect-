@@ -125,8 +125,7 @@ table {
   background-position: center;
 	height: 800px;
 	display: flex;
-	justify-content: space-between;
-
+	flex-flow: column;
 }
 
 .details {
@@ -139,35 +138,72 @@ table {
   border-radius: 10px 30px;
   line-height: 1.3;
 	position: relative;
-	top: 55%;
+	top: 17%;
 	margin-left: 0.8%;
+	width: 50%;
 
+	width: fit-content;
+	font-size: 1vw;
 }
 .form {
 background: url(../img/forms-bg.jpeg);
 background-size: cover;
 background-position: center;
 position: relative;
-height: 350px;
+height: fit-content;
 border-radius: 10%;
 top: 10%;
 display: flex;
-justify-content: space-around;
-width: 500px;
-padding-top: 2%;
+/* justify-content: space-around; */
+width: 40%;
+padding: 2%;
 margin-right: 2%;
-
-}
-.test {
-
+right:-58%;
 }
 .loginputs {
 	margin-bottom: 24px;
 }
+.formconnexion{
+	display: flex;
+	flex-flow: column;
+	width: 50%;
+	justify-content: center;
+	margin-right: 2%;
+}
+.link {
+	margin-top: 10px;
+	display: flex;
+	flex-flow: column;
+	background-color: white;
+	opacity: 0.8;
+	align-items: center;
+	border-radius: 20px;
+	font-weight: bold;
 
+}
+.link a {
+	display: flex;
+	color: black;
+	text-decoration: none;
+	line-height: 1.5;
+}
+.link a:hover {
+	color: red;
+}
+.forminscription{
+width: 50%;
+margin-left: 2%;
+display: flex;
+flex-flow: column;
+}
+.succes{
+	color: cyan;
+	font-weight: bold;
+	margin-left: 30px;
+}
 .loginputs input {
 	border-radius: 5px 5px;
-	height: 50px;
+	padding: 6px;
 	width: 100%;
 
 }
@@ -182,39 +218,48 @@ margin-right: 2%;
 
 .signupinputs input {
 	border-radius: 5px 5px;
-
+	padding: 6px;
 	width: 100%;
 }
 
 .signupinputs input::placeholder {
 	font-family: 'montserratregular', sans-serif;
 }
+
+label{display: block;}
+.error{font-size: 1em;color:red;display: block;}
+
 .formtitle {
 text-align: center;
-
 border-radius: 20px;
-DISPLAY: flex;
+display: flex;
 FLEX-DIRECTION: column;
 MARGIN-BOTTOM: 5%;
 background-color: white;
+width: 50%;
+align-self:center;
+
 }
 
  .formtitle h2 {
 	font-size: 1rem;
 	font-weight: bold;
+	padding: 6px;
 	font-family: 'montserratregular', sans-serif;
+
 }
 .formbtn input {
 	background-color: skyblue;
-	margin-right: 50px;
+	/* margin-right: 50px; */
 	font-family: 'montserratregular', sans-serif;
 	font-weight: bold;
 	border-radius: 20px 20px;
+
 }
 
 .formbtn {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 }
 
 .formbtn :hover {
@@ -364,6 +409,7 @@ justify-content: center;
 	.box1 img {
 		width: 100%;
 	}
+
 }
 @media screen and (max-width:	600px )
 {
@@ -382,15 +428,114 @@ justify-content: center;
 	}
 }
 /* RESPONSIVE ACCUEIL */
-  @media screen and (max-width:	870px )
+
+  @media screen and (max-width:	1400px )
 {
-	.form, .forminscription, .formconnexion {
-	padding: 10px;
+
+	.form {
+
+		padding: 20px;
+		height: fit-content;
 	}
+	.details{
+		font-size: 1.3vw;
+	}
+
+
+}
+  @media screen and (max-width:	1000px )
+{
+	.link a {
+		font-size: 1.5vw;
+	}
+	.details{
+		font-size: 1.5vw;
+	}
+}
+  @media screen and (max-width:	900px )
+{
+
 	.form {
 		display: flex;
 		flex-direction: column;
+		padding: 20px;
+		height: fit-content;
+		right: 0%;
+		top:2%;
+		width: 70%
+	}
+	.forminscription{
+		width: 100%;
+	}
+	.formconnexion{
+		width: 100%;
+	}
+
+	.details{
+		font-size: 2vh;
+		width: 70%;
+		top:4%
+	}
+	.wrapacceuil{
+		flex-flow: column;
+		align-items: center;
+		height: 975px;
+	}
+	.link a {
+		font-size: 2.5vw;
+	}
+	.link{
+		margin-bottom: 10px;
+	}
+}
+  @media screen and (max-width:	600px )
+{
+
+	.form {
+
+		width: 100%;
+	}
+
+	.details{
+		font-size: 2vh;
+		width: 100%;
+
+	}
+	.wrapacceuil{
+		flex-flow: column;
+		align-items: center;
+
+	}
+	.link a {
+		font-size: 3vw;
+	}
+
+}
+  @media screen and (max-width:	400px )
+{
+
+	.form {
+
+		width: 100%;
 
 	}
 
+	.details{
+		font-size: 2.3vh;
+		width: 100%;
+
+	}
+	.wrapacceuil{
+		flex-flow: column;
+		align-items: center;
+		height: 1050px;
+	}
+
+}
+@media screen and (max-height:	700px )
+{
+	.wrapacceuil{
+		height: 1000px;
+
+	}
 }

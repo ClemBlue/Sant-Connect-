@@ -39,9 +39,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Pages-front:</h6>
                 <a class="collapse-item" href="../index.php">Accueil</a>
-                <a class="collapse-item" href="../profil.php">Profile</a>
+                <a class="collapse-item" href="../profil.php">Profil</a>
                 <a class="collapse-item" href="../contact.php">Contact</a>
-                <a class="collapse-item" href="../mentionlegal.php">Mentionlegal</a>
+                <a class="collapse-item" href="../mentionlegal.php">Mentions légales</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Gestion BDD:</h6>
                 <a class="collapse-item" href="index.php?id=1&&tag=none">Vaccin</a>
