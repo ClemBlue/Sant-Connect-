@@ -67,7 +67,6 @@ if(!empty($_POST['submitvaccin'])){
   $date_vaccin = cleanXss($_POST['date_vaccin']);
   $errors = ValidationText($errors,$name,'name',2,50);
   if(!empty($date_vaccin)){
-    echo 'date fournis';
   } else {
     $errors['date_vaccin'] = 'Veuillez renseigner ce champ';
   }
@@ -78,9 +77,6 @@ if(!empty($_POST['submitvaccin'])){
     $query->bindValue(':status', $status,PDO::PARAM_STR);
     $query->execute();
     $idOfUseresVaccin = $query->fetch();
-    debug($idOfUseresVaccin);
-    echo $date_vaccin;
-    echo $userID;
     if (!empty($idOfUseresVaccin)) {
       $sql = "UPDATE user_vaccin SET date_vaccin = :date_vaccin WHERE id_vaccin = :id_vaccin && id_user = :userID";
       $query = $pdo->prepare($sql);
@@ -88,8 +84,6 @@ if(!empty($_POST['submitvaccin'])){
       $query->bindValue(':userID',$userID,PDO::PARAM_INT);
       $query->bindValue(':id_vaccin',$idOfUseresVaccin,PDO::PARAM_INT);
       $query->execute();
-      $affected_rows = $query->rowCount();
-      echo $affected_rows;
     } else {
       $errors['name'] = 'Mauvais nom de vaccin entré OU vaccin non disponible';
     }
@@ -99,15 +93,20 @@ if(!empty($_POST['submitvaccin'])){
 // Récup date des vaccins pour puis afficher temps restant //
 require('inc/header-front.php');
 ?>
-
-<p>Bienvenu <?php echo $nom . ' ' . $prenom; ?><p>
-
+<div class="bodyprofil">
+<div class="avatarname">
+  <img src="asset/img/avatar.png" alt="avatar" width="100">
+  <h4><?php echo $prenom . ' ' . $nom; ?></h4>
+</div>
+<div class="bienvenue">
+<p>Bienvenue, <?php echo $prenom . ' ' . $nom; ?><p>
+</div>
+<br>
 <?php
 $idTemp = -1;
 if (!empty($vaccinUser)) {
   foreach ($vaccinsOfUser as $vaccinOfUser) {
   $idTemp++;
-  echo $idTemp;
   echo $vaccinOfUser['name'];
   echo '</br>';
   echo $vaccinOfUser['description'];
@@ -127,6 +126,7 @@ echo '<p>Vous n\'avez ajouté aucun vaccin</p>';
 }
 ?>
 <!-- Ajout date de vaccin -->
+<div class="vaccinform">
 <form action="" method="post">
   <label for="name">Nom du Vaccin</label>
   <span class="error"><?php if(!empty($errors['name'])) { echo $errors['name']; } ?></span>
@@ -136,25 +136,25 @@ echo '<p>Vous n\'avez ajouté aucun vaccin</p>';
   <input type="date" name="date_vaccin" value="">
   <input type="submit" name="submitvaccin" value="Valider">
 </form>
-
+</div>
 <?php
 if (!empty($vaccinsAll)) {
   foreach ($vaccinsAll as $vaccinAll) {
     if(!empty($vaccinAll)){
+    echo '<div class="vaccin">';
     echo $vaccinAll['name'];
     echo '</br>';
     echo $vaccinAll['description'];
     echo '</br>';
-    echo '<a href="vaccins.php?id=' . $vaccinAll['id'] . '&&type=add">Ajouter à mes vaccins</a>';
-    echo '</br>';
+    echo '<a href="vaccins.php?id=' . $vaccinAll['id'] . '&&type=add">Ajouter à mes vaccins</a></br>';
+    echo '</div>';
     }
   }
 } else {
-  echo '<p>Plus de vaccins à ajouter</p>';
+  echo '<div> <p>Plus de vaccins à ajouter</p> </div>';
 }
 ?>
-
-<a href="logout.php">Déconexion</a>
-
+<a class="logout" href="logout.php">Déconnexion</a>
+</div>
 <?php
 require('inc/footer-front.php');

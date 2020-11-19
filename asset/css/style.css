@@ -252,13 +252,14 @@ align-self:center;
 
 }
 
- .formtitle h2 {
+.formtitle h2 {
 	font-size: 1rem;
 	font-weight: bold;
 	padding: 6px;
 	font-family: 'montserratregular', sans-serif;
 
 }
+
 .formbtn input {
 	background-color: skyblue;
 	/* margin-right: 50px; */
@@ -304,8 +305,52 @@ align-self:center;
 	font-weight: bolder;
 }
 
-/* FORMULAIRES ACCUEIL par Younès */
+/* PAGE PROFIL par Younès */
+.vaccinform {
+    flex: 1 1 auto;
+    min-height: 1px;
+	padding: 1rem;
+	position: relative;
+    display: flex;
+    flex-direction: column;
+	min-width: 0;
+	width: fit-content;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.bienvenue {
+	text-align: center;
+	font-size: 1.3em;
+}
 
+p {
+	text-align: center;
+}
+
+.logout:hover{
+	background-color: red;
+	opacity: 0.5;
+}
+
+.bodyprofil a {
+	background-color: skyblue;
+	text-decoration: none;
+	border: 1px solid black;
+	color: black;
+	padding: 0.3%;
+}
+
+.bodyprofil a:hover {
+opacity: 0.8;
+}
+
+.bodyprofil {
+	line-height: 2;
+	margin-left: 2%;
+}
 
 /* PAGE CONTACT par Cyril*/
 body {
