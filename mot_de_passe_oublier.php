@@ -7,7 +7,7 @@ require('inc/function.php');
 //formulaire email, verif email , envoyer if : token , user , email ok ,
 //fonction date token : datetime - deltatime =delai limite d'existance de date token,
 
-
+$token = '';
 
 if(!empty($_POST['submited'])) {
   // Faille xss.
@@ -34,8 +34,7 @@ if(!empty($_POST['submited'])) {
         $query->bindValue(':id',$id,PDO::PARAM_INT);
         $query->execute();
         $token = $query->fetch();
-        debug($token['token']);
-        echo '<a href="mdp_modif.php?id='.$token['token'].'">changermdp</a>';
+
         $sql = "UPDATE users SET datetoken = NOW() WHERE id =$id";
           $query = $pdo->prepare($sql);
           $query->execute();
@@ -58,6 +57,12 @@ require('inc/header-front.php');?>
 
 
   <input type="submit" name="submited" value="Valider" />
+  <?php if (!empty($verifEmail)): ?>
+    <?php echo '<a href="mdp_modif.php?id='.$token['token'].'">Modifier le mot de passe </a>';
+    echo ' Le lien est normalement envoyer par email.';
+
+     ?>
+  <?php endif; ?>
 </form>
 <?php
 require('inc/footer-front.php');
