@@ -33,7 +33,6 @@ if(!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] == 'admin') {
   }
   // Update Status actif
   if (!empty($_GET) && $_GET['tag'] == 'add') {
-    echo ' bv';
     $sql = "UPDATE vaccins
             SET status = 'actif', updated_at = NOW()
             WHERE id = :vaccin_add";
@@ -347,7 +346,6 @@ require('inc/navbar.php');
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">BDD Vaccins</h6>
-                                <a href="add_vaccin.php">Ajouter un vaccin</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
