@@ -230,6 +230,7 @@ require('inc/navbar.php');
 
                                   <form class="form-user" action="" method="post">
                                     <!-- name -->
+                                      <label for="">Modifier un utilisateur</label>
                                       <label for="name">Name</label>
                                       <span class="errorse"><?php if(!empty($errors['name'])){echo $errors['name'];} ?></span>
                                       <input id="name-edit" type="text" name="name-edit" value="<?php if(!empty($_POST['name'])){echo $_POST['name'];} else { echo $user_placeholder['name']; } ?>">

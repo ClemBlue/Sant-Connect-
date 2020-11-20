@@ -405,6 +405,7 @@ require('inc/navbar.php');
                                       <!-- Edit Vaccins -->
                                       <form class="form-edit" action="" method="post">
                                         <!-- name -->
+                                          <label for="name">Modification d'un vaccin</label>
                                           <label for="name">Name</label>
                                           <span class="errorse"><?php if(!empty($errors['name'])){echo $errors['name'];} ?></span>
                                           <input id="name-edit" type="text" name="name-edit" value="<?php if(!empty($_POST['name'])){echo $_POST['name'];} else { echo $vaccin_placeholder['name']; } ?>">
@@ -420,6 +421,7 @@ require('inc/navbar.php');
                                       </form>
                                       <!-- ADD Vaccins -->
                                       <form class="form-add" action="" method="post" >
+                                        <label for="title">Ajout d'un vaccin</label>
                                         <div class="errorses">
                                           <label for="title">Name</label>
                                           <span class="errorse"><?php if(!empty($errors['title'])) { echo $errors['title']; } ?></span>
