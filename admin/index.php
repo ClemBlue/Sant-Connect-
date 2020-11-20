@@ -33,7 +33,6 @@ if(!empty($_SESSION['user']['role']) && $_SESSION['user']['role'] == 'admin') {
   }
   // Update Status actif
   if (!empty($_GET) && $_GET['tag'] == 'add') {
-    echo ' bv';
     $sql = "UPDATE vaccins
             SET status = 'actif', updated_at = NOW()
             WHERE id = :vaccin_add";
@@ -347,7 +346,6 @@ require('inc/navbar.php');
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">BDD Vaccins</h6>
-                                <a href="add_vaccin.php">Ajouter un vaccin</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -405,6 +403,7 @@ require('inc/navbar.php');
                                       <!-- Edit Vaccins -->
                                       <form class="form-edit" action="" method="post">
                                         <!-- name -->
+                                          <label for="name">Modification d'un vaccin</label>
                                           <label for="name">Name</label>
                                           <span class="errorse"><?php if(!empty($errors['name'])){echo $errors['name'];} ?></span>
                                           <input id="name-edit" type="text" name="name-edit" value="<?php if(!empty($_POST['name'])){echo $_POST['name'];} else { echo $vaccin_placeholder['name']; } ?>">
@@ -420,6 +419,7 @@ require('inc/navbar.php');
                                       </form>
                                       <!-- ADD Vaccins -->
                                       <form class="form-add" action="" method="post" >
+                                        <label for="title">Ajout d'un vaccin</label>
                                         <div class="errorses">
                                           <label for="title">Name</label>
                                           <span class="errorse"><?php if(!empty($errors['title'])) { echo $errors['title']; } ?></span>
