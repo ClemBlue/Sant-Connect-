@@ -97,11 +97,11 @@ if(!empty($_POST['submitconnexion'])) {
         // exit();
 
       } else {
-        $errors['email'] = 'Error credential';
+        $errors['email'] = 'Mot de passe incorrect';
       }
 
     } else {
-      $errors['email'] = 'Mauvais utilisateur ou compte désactivé par un admin.';
+      $errors['email'] = 'Adresse mail incorrecte ou compte désactivé par un admin.';
     }
   } else {
     $errors['email'] = 'Veuillez renseigner ce champ';
